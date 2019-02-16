@@ -8,7 +8,6 @@ function init() {
 // loads gallery 
 function renderGallery(filter = null) {
     var imgs = getImgsToDisplay(filter) || [];
-    console.log(imgs);
     var strHtmls = imgs.map(function (img) {
         return `
     <div class="lab_item">
@@ -60,7 +59,6 @@ function renderLine(line) {
 function drawLine(gMeme) {
     Object.keys(gMeme.txts).forEach(key => {
         var line = gMeme.txts[key];
-        console.log(line);
         renderLine(line)
     })
 }
@@ -89,21 +87,23 @@ function handleImageFromInput(ev, onImageReady) {
     reader.readAsDataURL(ev.target.files[0]);
 }
 
-function onDoMeme(lineWrapperClass) {
-    //first/second line ?
-    var wrapper = document.querySelector('.' + lineWrapperClass);
+function onDoMeme() {
+    var targetElementInput =  event.target;
+    var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
+    var wrapperName = wrapper.dataset.name;
 
 
     var colorChoosen = wrapper.querySelector('.txt-color').value;
     var font = wrapper.querySelector('.font').value;
     var lineInputValue = wrapper.querySelector('.line-input').value;
     var fontSize = wrapper.querySelector(".fontSize").value;
-    var yPos = wrapper.querySelector('.yPos').value
-    if (lineWrapperClass == 'second-line-wrapper') {
+    var yPos = wrapper.querySelector('.yPos').value;
+    yPos = +yPos;
+    if (yPos < 0) {
         yPos = gCanvas.height + (+yPos);
     }
 
-    gMeme.txts[lineWrapperClass] = createTxt(lineInputValue, fontSize, 'center', colorChoosen, font, gCanvas.width / 2, yPos)
+    gMeme.txts[wrapperName] = createTxt(lineInputValue, fontSize, 'center', colorChoosen, font, gCanvas.width / 2, yPos)
 
     // if no uploadedImage in the global object
     if (!gMeme.uploadedImage) {
@@ -126,11 +126,53 @@ function onDoMeme(lineWrapperClass) {
 
 function onAddLine() {
     var elMyDiv = document.querySelector('.extra-lines');
-    var divtest = document.createElement("span");
-    divtest.innerHTML = '<input type="text" class="another-line" placeholder="Write meme here" /><br/>';
+    var divtest = document.createElement("div");
+    divtest.innerHTML = generateLineHtml();
     elMyDiv.appendChild(divtest);
 }
 
 function onSearch(value) {
     renderGallery(value);
+}
+
+
+function generateLineHtml() {
+    var yPos =  gCanvas.height / 2;
+    var name = '_' + Math.random().toString(36).substr(2, 9);
+    return `
+    <div class="line-wrapper" data-name="${name}">
+    <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
+    <input type="hidden" class="fontSize" value="48" />
+    <input type="hidden" class="yPos" value="${yPos}" />
+
+    <div class="control-box">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary"><i class="fas fa-align-left"></i></button>
+            <button type="button" class="btn btn-secondary" autofocus><i
+                    class="fas fa-align-justify"></i></button>
+            <button type="button" class="btn btn-secondary"><i class="fas fa-align-right"></i></button>
+        </div>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
+                <select class="font">
+                    <option value="impact">Impact</option>
+                    <option value="arial">Arial</option>
+                    <option value="curier-new">Curier New</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+            </button>
+            <button type="button" class="btn btn-secondary"><i class="fas fa-palette"><input type="color"
+                        class="txt-color" value="#ffffff" /></i></button>
+            <div id="palette"></div>
+        </div>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
+            <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
+        </div>
+        <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
+    </div>
+</div>
+    `
 }

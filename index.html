@@ -19,8 +19,8 @@
 
             Upload your own img: <input type="file" name="image" onchange="onFileInputChange(event)" /><br />
 
-            <div class="first-line-wrapper">
-                <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme('first-line-wrapper')" /><br />
+            <div class="line-wrapper" data-name="first">
+                <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
                 <input type="hidden" class="fontSize" value="48" />
                 <input type="hidden" class="yPos" value="85" />
 
@@ -51,17 +51,10 @@
                         <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
                     </div>
                     <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
-                    <div class="extra-lines">
-
-                    </div>
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                        <input name="img" id="imgData" type="hidden" />
-                    </form>
-                    <br>
                 </div>
             </div>
-            <div class="second-line-wrapper">
-                    <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme('second-line-wrapper')" /><br />
+            <div class="line-wrapper" data-name="second">
+                    <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
                     <input type="hidden" class="fontSize" value="48" />
                     <input type="hidden" class="yPos" value="-85" />
     
@@ -93,16 +86,10 @@
                             <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
                         </div>
                         <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
-                        <div class="extra-lines">
-    
-                        </div>
-                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                            <input name="img" id="imgData" type="hidden" />
-                        </form>
-                        <br>
                     </div>
-                </div>
-                
+            </div>
+
+            <div class="extra-lines"></div>
             <button onclick="onAddLine()" class="btn btn-secondary">Add another line</button><br /><br />
 
             <div class="canvasContainer">
@@ -146,7 +133,9 @@
     </section>
     <!-- END GALLERY MEME SECTION -->
     </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
     <script src="lib/bootstrap.js"></script>
+    
     <script src="js/upload-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>

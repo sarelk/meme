@@ -35,7 +35,6 @@ var gMeme = {
 }
 
 function loadImg(id) {
-    console.log(id);
     gMeme.selectedImgId = id;
     var img = new Image();
     img.src = 'img/' + id + '.jpg';
