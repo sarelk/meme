@@ -19,10 +19,10 @@
 
             Upload your own img: <input type="file" name="image" onchange="onFileInputChange(event)" /><br />
 
-            <div class="first-line">
-                <input type="text" class="second-line" placeholder="Write line here" onkeyup="onDoMeme('first-line')" /><br />
+            <div class="first-line-wrapper">
+                <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme('.first-line-wrapper')" /><br />
                 <input type="hidden" class="fontSize" value="48" />
-
+                <input type="hidden" class="yPos" value="85" />
 
                 <div class="control-box">
                     <div class="btn-group" role="group">
@@ -60,6 +60,49 @@
                     <br>
                 </div>
             </div>
+            <div class="second-line-wrapper">
+                    <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme('.second-line-wrapper')" /><br />
+                    <input type="hidden" class="fontSize" value="48" />
+                    <input type="hidden" class="yPos" value="-85" />
+    
+    
+                    <div class="control-box">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary"><i class="fas fa-align-left"></i></button>
+                            <button type="button" class="btn btn-secondary" autofocus><i
+                                    class="fas fa-align-justify"></i></button>
+                            <button type="button" class="btn btn-secondary"><i class="fas fa-align-right"></i></button>
+                        </div>
+    
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
+                                <select class="font">
+                                    <option value="impact">Impact</option>
+                                    <option value="arial">Arial</option>
+                                    <option value="curier-new">Curier New</option>
+                                    <option value="Times New Roman">Times New Roman</option>
+                                </select>
+                            </button>
+                            <button type="button" class="btn btn-secondary"><i class="fas fa-palette"><input type="color"
+                                        class="txt-color" value="#ffffff" /></i></button>
+                            <div id="palette"></div>
+                        </div>
+    
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
+                        </div>
+                        <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
+                        <div class="extra-lines">
+    
+                        </div>
+                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                            <input name="img" id="imgData" type="hidden" />
+                        </form>
+                        <br>
+                    </div>
+                </div>
+                
             <button onclick="onAddLine()" class="btn btn-secondary">Add another line</button><br /><br />
 
             <div class="canvasContainer">
