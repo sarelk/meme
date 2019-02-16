@@ -46,36 +46,23 @@ function renderCanvas(img) {
 }
 
 // Draw line 
-function drawFirstLine(colorChoosen, font, firstLine, fontSize, yPos) {
-    gCtx.font = fontSize + 'px ' + font;
+function renderLine(line) {
+    gCtx.font = line.size + 'px ' + line.font;
     gCtx.strokeStyle = 'black';
     gCtx.lineWidth = 6;
     gCtx.textAlign = 'center';
-    gCtx.strokeText(firstLine, gCanvas.width / 2, yPos);
-    gCtx.fillStyle = colorChoosen;
-    gCtx.fillText(firstLine, gCanvas.width / 2, yPos);
+    gCtx.strokeText(line.line, gCanvas.width / 2, line.y);
+    gCtx.fillStyle = line.color;
+    gCtx.fillText(line.line, gCanvas.width / 2, line.y);
 }
 
 
 function drawLine(gMeme) {
-    console.log(gMeme);
-    
     Object.keys(gMeme.txts).forEach(key => {
         var line = gMeme.txts[key];
         console.log(line);
-        drawFirstLine(line.color, line.font, line.line, line.size, line.y)
+        renderLine(line)
     })
-}
-
-// Draw line
-function drawSecondLine(colorChoosen, font, secondLine, fontSize) {
-    gCtx.font = fontSize + 'px ' + font;
-    gCtx.strokeStyle = 'black';
-    gCtx.lineWidth = 6;
-    gCtx.textAlign = 'center';
-    gCtx.strokeText(secondLine, gCanvas.width / 2, gCanvas.height - 85);
-    gCtx.fillStyle = colorChoosen;
-    gCtx.fillText(secondLine, gCanvas.width / 2, gCanvas.height - 85);
 }
 
 function onFileInputChange(ev) {
@@ -91,11 +78,13 @@ function downloadImg(elLink) {
 function handleImageFromInput(ev, onImageReady) {
     document.querySelector('.share-container').innerHTML = ''
     var reader = new FileReader();
-    console.log(ev)
+    //save in global object
+    //gMeme.uploadedImage
     reader.onload = function (event) {
         var img = new Image();
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result;
+        gMeme.uploadedImage = img;
     }
     reader.readAsDataURL(ev.target.files[0]);
 }
@@ -115,21 +104,24 @@ function onDoMeme(lineWrapperClass) {
     }
 
     gMeme.txts[lineWrapperClass] = createTxt(lineInputValue, fontSize, 'center', colorChoosen, font, gCanvas.width / 2, yPos)
-    var img = new Image();
-    img.src = 'img/' + gMeme.selectedImgId + '.jpg';
 
-    img.onload = function () {
-        gCanvas.width = img.naturalWidth
-        gCanvas.height = img.naturalHeight
-        gCtx.drawImage(img, 0, 0);
+    // if no uploadedImage in the global object
+    if (!gMeme.uploadedImage) {
+
+        var img = new Image();
+        img.src = 'img/' + gMeme.selectedImgId + '.jpg';
+
+        img.onload = function () {
+            gCanvas.width = img.naturalWidth
+            gCanvas.height = img.naturalHeight
+            gCtx.drawImage(img, 0, 0);
+            drawLine(gMeme);
+        }
+    } else {
+        //else - use the uploaded image
+        gCtx.drawImage(gMeme.uploadedImage, 0, 0);
         drawLine(gMeme);
-        // drawFirstLine(colorChoosen, font, lineInputValue, fontSize, yPos)
     }
-
-
-    // if (anotherLine) {
-
-    // }
 }
 
 function onAddLine() {
