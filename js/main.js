@@ -56,6 +56,17 @@ function drawFirstLine(colorChoosen, font, firstLine, fontSize, yPos) {
     gCtx.fillText(firstLine, gCanvas.width / 2, yPos);
 }
 
+
+function drawLine(gMeme) {
+    console.log(gMeme);
+    
+    Object.keys(gMeme.txts).forEach(key => {
+        var line = gMeme.txts[key];
+        console.log(line);
+        drawFirstLine(line.color, line.font, line.line, line.size, line.y)
+    })
+}
+
 // Draw line
 function drawSecondLine(colorChoosen, font, secondLine, fontSize) {
     gCtx.font = fontSize + 'px ' + font;
@@ -91,7 +102,7 @@ function handleImageFromInput(ev, onImageReady) {
 
 function onDoMeme(lineWrapperClass) {
     //first/second line ?
-    var wrapper = document.querySelector(lineWrapperClass);
+    var wrapper = document.querySelector('.' + lineWrapperClass);
 
 
     var colorChoosen = wrapper.querySelector('.txt-color').value;
@@ -99,11 +110,11 @@ function onDoMeme(lineWrapperClass) {
     var lineInputValue = wrapper.querySelector('.line-input').value;
     var fontSize = wrapper.querySelector(".fontSize").value;
     var yPos = wrapper.querySelector('.yPos').value
-    if (lineWrapperClass == '.second-line-wrapper') {
+    if (lineWrapperClass == 'second-line-wrapper') {
         yPos = gCanvas.height + (+yPos);
     }
-    console.log(gCanvas.height, yPos);
-    gMeme.txts = createTxt(lineInputValue, fontSize, 'center', colorChoosen, gCanvas.width / 2, yPos)
+
+    gMeme.txts[lineWrapperClass] = createTxt(lineInputValue, fontSize, 'center', colorChoosen, font, gCanvas.width / 2, yPos)
     var img = new Image();
     img.src = 'img/' + gMeme.selectedImgId + '.jpg';
 
@@ -111,7 +122,8 @@ function onDoMeme(lineWrapperClass) {
         gCanvas.width = img.naturalWidth
         gCanvas.height = img.naturalHeight
         gCtx.drawImage(img, 0, 0);
-        drawFirstLine(colorChoosen, font, lineInputValue, fontSize, yPos)
+        drawLine(gMeme);
+        // drawFirstLine(colorChoosen, font, lineInputValue, fontSize, yPos)
     }
 
 
