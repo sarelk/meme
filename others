@@ -1,0 +1,23 @@
+function onSearchStr() {
+    let search = document.querySelector('.searchBox').value;
+    if (search === '') {
+        renderGallery();
+        return;
+    } else if (!gSearchedWords[search]) {
+        gSearchedWords[search] = 1;
+        // saveToLocalStorage(search, 1);
+    } else gSearchedWords[search]++;
+    // saveToLocalStorage(gSearchedWords);
+
+    let keyWords = getKeyWords();
+    let idx = keyWords.findIndex(function (keys) {
+
+        return keys.find(function (key) {
+
+            return key === search
+        })
+    })
+    if (idx === -1) return;
+    renderFoundImage(idx);
+    renderWordCloud(search);
+}
