@@ -45,14 +45,22 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="container flex">
+                <div id="container" class="container flex">
+                        <div class="meme">
+                                Upload your own img: <input type="file" name="image"
+                                    onchange="onFileInputChange(event)" /><br /><br />
+                                <a href="#" onclick="downloadImg(this)" title="Download" download="my-img.jpg"><button
+                                        class="btn btn-secondary">Download Meme <i
+                                            class="fas fa-file-download"></i></button></a>
+                                <button onclick="onAddLine()" class="btn btn-secondary">Add another line <i
+                                        class="fab fa-line"></i></button><br />
+                                <div class="canvasContainer">
+                                    <canvas id="myCanvas"></canvas>
+                                    <div class="myDiv"></div>
+                                </div>
+                            </div>
                     <div class="editor">
                         <div class="line-wrapper" data-name="first">
-                            <input type="text" class="line-input" placeholder="Write line here"
-                                onkeyup="onDoMeme()" /><br />
-                            <input type="hidden" class="yPos" value="85" />
-                            <input type="hidden" class="align" value="center" />
-
                             <div class="control-box">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-secondary" onclick="onLineUpDown('up')"><i
@@ -75,10 +83,10 @@
                                         <select class="font" onchange="onDoMeme()">
                                             <option value="impact">Impact</option>
                                             <option value="arial">Arial</option>
-                                            <option value="curier-new">Curier New</option>
+                                            <option value="curier-new">Curier</option>
                                         </select>
                                     </button>
-                                    <button type="button" class="btn btn-secondary"><label for="iPalette"><i
+                                    <button type="button" id="palette" class="btn btn-secondary palette"><label for="iPalette"><i
                                                 class="fas fa-palette"></i></label><input type="color" class="txt-color"
                                             value="#ffffff" id="iPalette" onchange="onDoMeme()" /></button>
 
@@ -94,15 +102,13 @@
                                 <button type="button" class="btn btn-secondary" onclick="onRemove()"><i
                                         class="fas fa-trash-alt"></i></i></button>
                             </div>
-                        </div>
-                        <div class="line-wrapper" data-name="second">
                             <input type="text" class="line-input" placeholder="Write line here"
-                                onkeyup="onDoMeme()" /><br />
-                            <input type="hidden" class="fontSize" value="48" />
-                            <input type="hidden" class="yPos" value="-85" />
-                            <input type="hidden" class="align" value="center" />
+                            onkeyup="onDoMeme()" /><br />
+                        <input type="hidden" class="yPos" value="85" />
+                        <input type="hidden" class="align" value="center" />
+                        </div>
 
-
+                        <div class="line-wrapper" data-name="second">
                             <div class="control-box">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-secondary" onclick="onLineUpDown('up')"><i
@@ -124,10 +130,10 @@
                                         <select class="font" onchange="onDoMeme()">
                                             <option value="impact">Impact</option>
                                             <option value="arial">Arial</option>
-                                            <option value="curier-new">Curier New</option>
+                                            <option value="curier-new">Curier</option>
                                         </select>
                                     </button>
-                                    <button type="button" class="btn btn-secondary"><label for="iPalette"><i
+                                    <button id="palette" type="button" class="btn btn-secondary"><label for="iPalette"><i
                                                 class="fas fa-palette"></i></label><input type="color" class="txt-color"
                                             value="#ffffff" id="iPalette" onchange="onDoMeme()" /></button>
 
@@ -142,23 +148,14 @@
                                 <button type="button" class="btn btn-secondary" onclick="onRemove()"><i
                                         class="fas fa-trash-alt"></i></i></button>
                             </div>
+                            <input type="text" class="line-input" placeholder="Write line here"
+                            onkeyup="onDoMeme()" /><br />
+                        <input type="hidden" class="fontSize" value="48" />
+                        <input type="hidden" class="yPos" value="-85" />
+                        <input type="hidden" class="align" value="center" />
                         </div>
 
                         <div class="extra-lines"></div>
-                    </div>
-
-                    <div class="meme">
-                        Upload your own img: <input type="file" name="image"
-                            onchange="onFileInputChange(event)" /><br /><br />
-                        <a href="#" onclick="downloadImg(this)" title="Download" download="my-img.jpg"><button
-                                class="btn btn-secondary">Download Meme <i
-                                    class="fas fa-file-download"></i></button></a>
-                        <button onclick="onAddLine()" class="btn btn-secondary">Add another line <i
-                                class="fab fa-line"></i></button><br />
-                        <div class="canvasContainer">
-                            <canvas id="myCanvas"></canvas>
-                            <div class="myDiv"></div>
-                        </div>
                     </div>
                 </div>
 

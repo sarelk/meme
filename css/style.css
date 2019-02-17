@@ -37,12 +37,30 @@ canvas {
     height: auto;
 }
 
-editor {
-    /* padding:10px; */
+.editor {
+    padding:10px;
 }
 
 .line-input {
-    width: 70%;
+    appearance: none;
+    background-color: none;
+    border: 1px solid black;
+    line-height: 0;
+    font-size: 17px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 60px;
+    /* color: #ff4a56; */
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+}
+
+.line-input:focus {
+    outline: none;
 }
 
 .meme-editor {
@@ -64,21 +82,19 @@ editor {
 
 .control-box {
     margin-top:20px;
-    line-height: 60px;
+    line-height: 30px;
+    width:100%;
 }
 
-/* 
-@media (max-width: 640px) {
-    .editor {
-        background-color: black;
-    }
-} */
+@media screen and (max-width: 768px) {
+#palette {
+    display: none;
+}
 
-/* @media screen and (max-width: 768px) {
-.flex {
+#container {
     display: block;
 }
-} */
+}
 
 /* MEME GALLERY */
 

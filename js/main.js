@@ -129,11 +129,6 @@ function generateLineHtml() {
     var name = '_' + Math.random().toString(36).substr(2, 9);
     return `
     <div class="line-wrapper" data-name="${name}">
-    <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
-    <input type="hidden" class="fontSize" value="48" />
-    <input type="hidden" class="yPos" value="${yPos}" />
-    <input type="hidden" class="align" value="center" />
-
     <div class="control-box">
     <div class="btn-group" role="group">
     <button type="button" class="btn btn-secondary" onclick="onLineUpDown('up')"><i
@@ -152,7 +147,7 @@ function generateLineHtml() {
                 <select class="font" onchange="onDoMeme()">
                     <option value="impact">Impact</option>
                     <option value="arial">Arial</option>
-                    <option value="curier-new">Curier New</option>
+                    <option value="curier-new">Curier</option>
                 </select>
             </button>
             <button type="button" class="btn btn-secondary"><label for="iPalette"><i class="fas fa-palette"></i></label><input type="color"
@@ -165,7 +160,11 @@ function generateLineHtml() {
             <button type="button" class="btn btn-secondary" onclick="onDoFontSize('minus')"><i class="fas fa-minus"></i></button>
         </div>
         <button type="button" class="btn btn-secondary" onclick="onRemove()"><i class="fas fa-trash-alt"></i></i></button>
-    </div>
+        <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
+        <input type="hidden" class="fontSize" value="48" />
+        <input type="hidden" class="yPos" value="${yPos}" />
+        <input type="hidden" class="align" value="center" />
+     </div>
 </div>
     `
 }
@@ -224,5 +223,5 @@ function onLineUpDown(val) {
 function onASubmit() {
     var $subject = $('.subject').val();
     var $msg = $('.msg').val();
-    submitEmail($subject,$msg)
+    submitEmail($subject, $msg)
 }
