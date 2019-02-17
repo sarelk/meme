@@ -221,3 +221,9 @@ function onLineUpDown(val) {
     }
     onDoMeme();
 }
+
+function onASubmit() {
+    var $subject = $('.subject').val();
+    var $msg = $('.msg').val();
+    submitEmail($subject,$msg)
+}

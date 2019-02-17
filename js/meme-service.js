@@ -96,3 +96,7 @@ function renderLine(line) {
     gCtx.fillStyle = line.color;
     gCtx.fillText(line.line, line.x, line.y);
 }
+
+function submitEmail($subject,$msg) {
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=Sarelk@gmail.com&su='+ $subject +'&body='+ $msg +'', '_blank');
+}

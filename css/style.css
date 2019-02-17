@@ -49,7 +49,6 @@ canvas {
 
  .search {
      margin: 0 auto;
-     size:100;
  }
 
  /* Search form */ 
@@ -121,6 +120,9 @@ canvas {
 }
 
 @media screen and (max-width: 768px) {
+    .search {
+        margin-top:20px;
+    }
     .searchForm {
         width: 200px;
         cursor: pointer;
@@ -273,7 +275,7 @@ canvas {
   #lab {
       width: 1000px;
       overflow: hidden;
-      padding-bottom: 70px;
+      padding-bottom: 10px;
       position: relative;
       margin: 0 auto;
       margin-bottom: 2.5em;
@@ -287,9 +289,10 @@ canvas {
   }
   
   #lab h1 {
-      background: black;
-      color: white;
-      padding: 10px;
+     font-family: 'Coiny', cursive;
+     background: black;
+     color: white;
+     padding: 10px;
   }
 
   .sectionheader {
@@ -430,6 +433,51 @@ canvas {
   }
 
    /* END OF HEXAGON */
+
+   main {
+       background-color: rgb(46,179,152);
+       margin-top:20px;
+       color:white;
+       padding:100px;
+   }
+
+   main h2 {
+    font-family: 'Coiny', cursive;
+   }
+
+   main img {
+    border-radius: 30%;
+    width: 80%;
+}
+
+.selfText {
+    padding: 10px;
+}
+
+@media (max-width: 640px) {
+    main img {
+    border-radius: 20%;
+    width: 100%;
+     }
+}
+
+.contact {
+    background-color: rgb(49,49,49);
+    color:white;
+    padding: 20px;
+}
+
+.contact form {
+    max-width:80%;
+}
+
+.contact h2 {
+    font-family: 'Coiny', cursive;
+   }
+
+p .cofferight {
+    margin-top:20px;
+}
 
 /* HELPERS */
 
