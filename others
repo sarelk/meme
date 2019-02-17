@@ -1,23 +1,8 @@
-function onSearchStr() {
-    let search = document.querySelector('.searchBox').value;
-    if (search === '') {
-        renderGallery();
-        return;
-    } else if (!gSearchedWords[search]) {
-        gSearchedWords[search] = 1;
-        // saveToLocalStorage(search, 1);
-    } else gSearchedWords[search]++;
-    // saveToLocalStorage(gSearchedWords);
-
-    let keyWords = getKeyWords();
-    let idx = keyWords.findIndex(function (keys) {
-
-        return keys.find(function (key) {
-
-            return key === search
-        })
-    })
-    if (idx === -1) return;
-    renderFoundImage(idx);
-    renderWordCloud(search);
-}
+                    <div class="radio-group btn-group">
+                        <input type="radio" class="btn btn-secondary" id="option-one" name="selector" value="left"><label
+                            for="option-one"><i class="fas fa-align-left"></i></label>
+                        <input type="radio" id="option-two" name="selector" checked="checked" value="center"><label for="option-two"><i
+                                class="fas fa-align-justify"></i></label>
+                        <input type="radio" id="option-three" name="selector" value="right"><label for="option-three"><i
+                                class="fas fa-align-right"></i></label>
+                    </div>

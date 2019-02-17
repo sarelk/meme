@@ -32,7 +32,39 @@ canvas {
 
 .meme-editor {
 }
+/*
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+  
+  label {
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+  }
+  
+  input[type=radio]:checked + label {
+    color: #ccc8ce;
+    background: #675f6b;
+  }
+  
+  label + input[type=radio] + label {
+    border-left: solid 3px white;
+  }
+  
+  .radio-group {
+    display: inline-block;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(107,117,126);
+  }
 
+*/
 
 
 /* MEME GALLERY */

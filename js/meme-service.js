@@ -78,3 +78,21 @@ function createTxt(line, size, align, color, font, x, y) {
 function removeLine(line) {
     gMeme.txts[line].line='';;
 }
+
+function drawLine(gMeme) {
+    Object.keys(gMeme.txts).forEach(key => {
+        var line = gMeme.txts[key];
+        renderLine(line)
+    })
+}
+
+// Draw line 
+function renderLine(line) {
+    gCtx.font = line.size + 'px ' + line.font;
+    gCtx.strokeStyle = 'black';
+    gCtx.lineWidth = 6;
+    gCtx.textAlign = 'center';
+    gCtx.strokeText(line.line, line.x, line.y);
+    gCtx.fillStyle = line.color;
+    gCtx.fillText(line.line, line.x, line.y);
+}

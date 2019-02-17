@@ -43,25 +43,6 @@ function renderCanvas(img) {
     gCtx.drawImage(img, 0, 0);
 }
 
-// Draw line 
-function renderLine(line) {
-    gCtx.font = line.size + 'px ' + line.font;
-    gCtx.strokeStyle = 'black';
-    gCtx.lineWidth = 6;
-    gCtx.textAlign = 'center';
-    gCtx.strokeText(line.line, gCanvas.width / 2, line.y);
-    gCtx.fillStyle = line.color;
-    gCtx.fillText(line.line, gCanvas.width / 2, line.y);
-}
-
-
-function drawLine(gMeme) {
-    Object.keys(gMeme.txts).forEach(key => {
-        var line = gMeme.txts[key];
-        renderLine(line)
-    })
-}
-
 function onFileInputChange(ev) {
     handleImageFromInput(ev, renderCanvas)
 }
@@ -96,12 +77,21 @@ function onDoMeme() {
     var lineInputValue = wrapper.querySelector('.line-input').value;
     var fontSize = wrapper.querySelector(".fontSize").value;
     var yPos = wrapper.querySelector('.yPos').value;
+    var align = wrapper.querySelector('.align').value;
     yPos = +yPos;
     if (yPos < 0) {
         yPos = gCanvas.height + (+yPos);
     }
 
-    gMeme.txts[wrapperName] = createTxt(lineInputValue, fontSize, 'center', colorChoosen, font, gCanvas.width / 2, yPos)
+    if (align === 'center') {
+        align = gCanvas.width / 2;
+    } else if (align === 'left') {
+        align = 90;
+    } else if (align === 'right') {
+        align = gCanvas.width-100;
+    }
+
+    gMeme.txts[wrapperName] = createTxt(lineInputValue, fontSize, align, colorChoosen, font, align, yPos)
 
     // if no uploadedImage in the global object
     if (!gMeme.uploadedImage) {
@@ -142,14 +132,14 @@ function generateLineHtml() {
     <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
     <input type="hidden" class="fontSize" value="48" />
     <input type="hidden" class="yPos" value="${yPos}" />
+    <input type="hidden" class="align" value="center" />
 
     <div class="control-box">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary"><i class="fas fa-align-left"></i></button>
-            <button type="button" class="btn btn-secondary" autofocus><i
-                    class="fas fa-align-justify"></i></button>
-            <button type="button" class="btn btn-secondary"><i class="fas fa-align-right"></i></button>
-        </div>
+    <div class="btn-group" role="group">
+    <button type="button" class="btn btn-secondary" onclick="onAlign('left')"><i class="fas fa-align-left"></i></button>
+    <button type="button" class="btn btn-secondary" onclick="onAlign('center')" autofocus><i class="fas fa-align-justify"></i></button>
+    <button type="button" class="btn btn-secondary" onclick="onAlign('right')"><i class="fas fa-align-right"></i></button>
+</div>
 
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
@@ -194,5 +184,20 @@ function onRemove() {
     var wrapperName = wrapper.dataset.name;
     removeLine(wrapperName);
     lineInput.value='';
+    onDoMeme();
+}
+
+function onAlign(val) {
+    var alignment = val;
+    var targetElementInput =  event.target;
+    var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
+    var alignInput =  wrapper.querySelector('.align');
+    if (alignment === 'center') {
+        alignInput.value ='center';
+    } else if (alignment === 'left') {
+        alignInput.value ='left';
+    } else if (alignment === 'right') {
+        alignInput.value ='right';
+    }
     onDoMeme();
 }
