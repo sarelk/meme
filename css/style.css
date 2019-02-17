@@ -32,39 +32,6 @@ canvas {
 
 .meme-editor {
 }
-/*
-input[type=radio] {
-    position: absolute;
-    visibility: hidden;
-    display: none;
-  }
-  
-  label {
-    color: white;
-    display: inline-block;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 5px 20px;
-  }
-  
-  input[type=radio]:checked + label {
-    color: #ccc8ce;
-    background: #675f6b;
-  }
-  
-  label + input[type=radio] + label {
-    border-left: solid 3px white;
-  }
-  
-  .radio-group {
-    display: inline-block;
-    margin: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: rgb(107,117,126);
-  }
-
-*/
 
 
 /* MEME GALLERY */
@@ -109,44 +76,7 @@ input[type=radio] {
   #lab h1 {
       background: #B0DAD4;
   }
-  
-  .beaker {
-      -webkit-filter: drop-shadow(#424242 0px 1px 0px);
-      border-bottom: 2em solid #FFF;
-      border-left: 1em solid transparent;
-      border-right: 1em solid transparent;
-      border-radius: .5em;
-      height: 0;
-      width: 1em;
-      position: absolute;
-      right: 0.7em;
-      bottom: 22%;
-      font-size: 0.6em;
-  }
-  
-  .beaker::before {
-      border-left: .25em solid #FFF;
-      border-radius: .25em;
-      border-right: .25em solid #FFF;
-      content: '';
-      height: .25em;
-      left: -.25em;
-      position: absolute;
-      top: -1em;
-      width: 1em;
-  }
-  
-  .beaker::after {
-      border-left: .25em solid #FFF;
-      border-right: .25em solid #FFF;
-      content: '';
-      height: 1em;
-      left: 0;
-      position: absolute;
-      top: -1em;
-      width: .5em;
-  }
-  
+
   .sectionheader {
       position: relative;
   }
@@ -283,24 +213,7 @@ input[type=radio] {
   }
   
   }
-  
-  /* @media (max-width: 450px) {
-      #lab article {
-      width: 300px;
-  }
-  
-  .lab_item:nth-child(3n) {
-      margin-left: 0px;
-  }
-  
-  .lab_item:nth-child(2n) {
-      margin-left: 102px;
-  }
-  
-  .lab_item:nth-child(n+2) {
-      margin-top: -56px;
-  }
-  } */
+
    /* END OF HEXAGON */
 
 /* HELPERS */
