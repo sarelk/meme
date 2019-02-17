@@ -92,7 +92,6 @@ function onDoMeme() {
     var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
     var wrapperName = wrapper.dataset.name;
 
-
     var colorChoosen = wrapper.querySelector('.txt-color').value;
     var font = wrapper.querySelector('.font').value;
     var lineInputValue = wrapper.querySelector('.line-input').value;
@@ -155,15 +154,15 @@ function generateLineHtml() {
 
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
-                <select class="font">
+                <select class="font" onchange="onDoMeme()">
                     <option value="impact">Impact</option>
                     <option value="arial">Arial</option>
                     <option value="curier-new">Curier New</option>
                     <option value="Times New Roman">Times New Roman</option>
                 </select>
             </button>
-            <button type="button" class="btn btn-secondary"><i class="fas fa-palette"><input type="color"
-                        class="txt-color" value="#ffffff" /></i></button>
+            <button type="button" class="btn btn-secondary"><label for="iPalette"><i class="fas fa-palette"></i></label><input type="color"
+                        class="txt-color" value="#ffffff" id="iPalette" onchange="onDoMeme()" /></button>
             <div id="palette"></div>
         </div>
 
@@ -175,4 +174,16 @@ function generateLineHtml() {
     </div>
 </div>
     `
+}
+
+function onDoFontSize(val) {
+    var targetElementInput =  event.target;
+    var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
+    if (val === 'minus') {
+        wrapper.querySelector('.fontSize').value--;
+        onDoMeme()
+    } else if (val === 'plus') {
+        wrapper.querySelector('.fontSize').value++;
+        onDoMeme()
+    }
 }

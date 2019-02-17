@@ -21,7 +21,6 @@
 
             <div class="line-wrapper" data-name="first">
                 <input type="text" class="line-input" placeholder="Write line here" onkeyup="onDoMeme()" /><br />
-                <input type="hidden" class="fontSize" value="48" />
                 <input type="hidden" class="yPos" value="85" />
 
                 <div class="control-box">
@@ -34,21 +33,22 @@
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
-                            <select class="font">
+                            <select class="font" onchange="onDoMeme()">
                                 <option value="impact">Impact</option>
                                 <option value="arial">Arial</option>
                                 <option value="curier-new">Curier New</option>
                                 <option value="Times New Roman">Times New Roman</option>
                             </select>
                         </button>
-                        <button type="button" class="btn btn-secondary"><i class="fas fa-palette"><input type="color"
-                                    class="txt-color" value="#ffffff" /></i></button>
-                        <div id="palette"></div>
+                        <button type="button" class="btn btn-secondary"><label for="iPalette"><i class="fas fa-palette"></i></label><input type="color"
+                                    class="txt-color" value="#ffffff" id="iPalette" onchange="onDoMeme()"/></button>
+                       
                     </div>
 
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
-                        <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
+                        <input type="hidden" class="fontSize" value="48" />
+                        <button type="button" class="btn btn-secondary" onclick="onDoFontSize('plus')"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onDoFontSize('minus')"><i class="fas fa-minus"></i></button>
                     </div>
                     <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
@@ -69,21 +69,21 @@
     
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
-                                <select class="font">
+                                <select class="font" onchange="onDoMeme()">
                                     <option value="impact">Impact</option>
                                     <option value="arial">Arial</option>
                                     <option value="curier-new">Curier New</option>
                                     <option value="Times New Roman">Times New Roman</option>
                                 </select>
                             </button>
-                            <button type="button" class="btn btn-secondary"><i class="fas fa-palette"><input type="color"
-                                        class="txt-color" value="#ffffff" /></i></button>
-                            <div id="palette"></div>
+                            <button type="button" class="btn btn-secondary"><label for="iPalette"><i class="fas fa-palette"></i></label><input type="color"
+                                        class="txt-color" value="#ffffff" id="iPalette" onchange="onDoMeme()" /></button>
+                            
                         </div>
     
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
-                            <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn btn-secondary" onclick="onDoFontSize('plus')"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-secondary" onclick="onDoFontSize('minus')"><i class="fas fa-minus"></i></button>
                         </div>
                         <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
                     </div>
