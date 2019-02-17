@@ -37,9 +37,48 @@ canvas {
     height: auto;
 }
 
-.meme-editor {
+editor {
+    /* padding:10px; */
 }
 
+.line-input {
+    width: 70%;
+}
+
+.meme-editor {
+    overflow: hidden;
+    padding-bottom: 10px;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 2.5em;
+    background: rgb(236, 236, 236);
+}
+
+.editor {
+    margin-top: 10px;
+}
+
+.meme {
+    margin-top: 10px;
+}
+
+.control-box {
+    margin-top:20px;
+    line-height: 60px;
+}
+
+/* 
+@media (max-width: 640px) {
+    .editor {
+        background-color: black;
+    }
+} */
+
+/* @media screen and (max-width: 768px) {
+.flex {
+    display: block;
+}
+} */
 
 /* MEME GALLERY */
 
@@ -477,6 +516,10 @@ canvas {
 
 p .cofferight {
     margin-top:20px;
+}
+
+.up {
+    float:right;
 }
 
 /* HELPERS */

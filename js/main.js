@@ -153,7 +153,6 @@ function generateLineHtml() {
                     <option value="impact">Impact</option>
                     <option value="arial">Arial</option>
                     <option value="curier-new">Curier New</option>
-                    <option value="Times New Roman">Times New Roman</option>
                 </select>
             </button>
             <button type="button" class="btn btn-secondary"><label for="iPalette"><i class="fas fa-palette"></i></label><input type="color"
