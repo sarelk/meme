@@ -68,7 +68,7 @@ function handleImageFromInput(ev, onImageReady) {
 }
 
 function onDoMeme() {
-    var targetElementInput =  event.target;
+    var targetElementInput = event.target;
     var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
     var wrapperName = wrapper.dataset.name;
 
@@ -88,7 +88,7 @@ function onDoMeme() {
     } else if (align === 'left') {
         align = 90;
     } else if (align === 'right') {
-        align = gCanvas.width-100;
+        align = gCanvas.width - 100;
     }
 
     gMeme.txts[wrapperName] = createTxt(lineInputValue, fontSize, align, colorChoosen, font, align, yPos)
@@ -125,7 +125,7 @@ function onSearch(value) {
 
 
 function generateLineHtml() {
-    var yPos =  gCanvas.height / 2;
+    var yPos = gCanvas.height / 2;
     var name = '_' + Math.random().toString(36).substr(2, 9);
     return `
     <div class="line-wrapper" data-name="${name}">
@@ -136,10 +136,16 @@ function generateLineHtml() {
 
     <div class="control-box">
     <div class="btn-group" role="group">
+    <button type="button" class="btn btn-secondary" onclick="onLineUpDown('up')"><i
+            class="fas fa-arrow-up"></i></button>
+    <button type="button" class="btn btn-secondary" onclick="onLineUpDown('down')"><i
+            class="fas fa-arrow-down"></i></button>
+</div>
+    <div class="btn-group" role="group">
     <button type="button" class="btn btn-secondary" onclick="onAlign('left')"><i class="fas fa-align-left"></i></button>
     <button type="button" class="btn btn-secondary" onclick="onAlign('center')" autofocus><i class="fas fa-align-justify"></i></button>
     <button type="button" class="btn btn-secondary" onclick="onAlign('right')"><i class="fas fa-align-right"></i></button>
-</div>
+    </div>
 
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
@@ -166,7 +172,7 @@ function generateLineHtml() {
 }
 
 function onDoFontSize(val) {
-    var targetElementInput =  event.target;
+    var targetElementInput = event.target;
     var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
     if (val === 'minus') {
         wrapper.querySelector('.fontSize').value--;
@@ -178,26 +184,40 @@ function onDoFontSize(val) {
 }
 
 function onRemove() {
-    var targetElementInput =  event.target;
+    var targetElementInput = event.target;
     var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
-    var lineInput= wrapper.querySelector('.line-input');
+    var lineInput = wrapper.querySelector('.line-input');
     var wrapperName = wrapper.dataset.name;
     removeLine(wrapperName);
-    lineInput.value='';
+    lineInput.value = '';
+    wrapper.classList.add('display-none');
     onDoMeme();
 }
 
 function onAlign(val) {
     var alignment = val;
-    var targetElementInput =  event.target;
+    var targetElementInput = event.target;
     var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
-    var alignInput =  wrapper.querySelector('.align');
+    var alignInput = wrapper.querySelector('.align');
     if (alignment === 'center') {
-        alignInput.value ='center';
+        alignInput.value = 'center';
     } else if (alignment === 'left') {
-        alignInput.value ='left';
+        alignInput.value = 'left';
     } else if (alignment === 'right') {
-        alignInput.value ='right';
+        alignInput.value = 'right';
+    }
+    onDoMeme();
+}
+
+function onLineUpDown(val) {
+    var direction = val;
+    var targetElementInput = event.target;
+    var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
+    var alignInput = wrapper.querySelector('.yPos');
+    if (direction === 'up') {
+        alignInput.value--;
+    } else if (direction === 'down') {
+        alignInput.value++;
     }
     onDoMeme();
 }

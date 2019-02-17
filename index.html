@@ -25,11 +25,21 @@
                 <input type="hidden" class="align" value="center" />
 
                 <div class="control-box">
-                        <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary" onclick="onAlign('left')"><i class="fas fa-align-left"></i></button>
-                                <button type="button" class="btn btn-secondary" onclick="onAlign('center')" autofocus><i class="fas fa-align-justify"></i></button>
-                                <button type="button" class="btn btn-secondary" onclick="onAlign('right')"><i class="fas fa-align-right"></i></button>
-                            </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary" onclick="onLineUpDown('up')"><i
+                                class="fas fa-arrow-up"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onLineUpDown('down')"><i
+                                class="fas fa-arrow-down"></i></button>
+                    </div>
+
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary" onclick="onAlign('left')"><i
+                                class="fas fa-align-left"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onAlign('center')" autofocus><i
+                                class="fas fa-align-justify"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onAlign('right')"><i
+                                class="fas fa-align-right"></i></button>
+                    </div>
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
@@ -65,11 +75,20 @@
 
 
                 <div class="control-box">
-                        <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-secondary" onclick="onAlign('left')"><i class="fas fa-align-left"></i></button>
-                                <button type="button" class="btn btn-secondary" onclick="onAlign('center')" autofocus><i class="fas fa-align-justify"></i></button>
-                                <button type="button" class="btn btn-secondary" onclick="onAlign('right')"><i class="fas fa-align-right"></i></button>
-                            </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary" onclick="onLineUpDown('up')"><i
+                                class="fas fa-arrow-up"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onLineUpDown('down')"><i
+                                class="fas fa-arrow-down"></i></button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary" onclick="onAlign('left')"><i
+                                class="fas fa-align-left"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onAlign('center')" autofocus><i
+                                class="fas fa-align-justify"></i></button>
+                        <button type="button" class="btn btn-secondary" onclick="onAlign('right')"><i
+                                class="fas fa-align-right"></i></button>
+                    </div>
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-secondary"><i class="fas fa-font"></i>
@@ -98,7 +117,7 @@
             </div>
 
             <div class="extra-lines"></div>
-            <button onclick="onAddLine()" class="btn btn-secondary">Add another line</button><br /><br />
+            <button onclick="onAddLine()" class="btn btn-secondary">Add another line <i class="fab fa-line"></i></button><br /><br />
 
             <div class="canvasContainer">
                 <canvas id="myCanvas"></canvas>
@@ -107,7 +126,7 @@
 
             <br />
 
-            <a href="#" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+            <a href="#" onclick="downloadImg(this)" title="Download" download="my-img.jpg"><button class="btn btn-secondary">Download <i class="fas fa-file-download"></i></button></a>
     </div>
 
     <br>

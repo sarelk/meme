@@ -76,7 +76,7 @@ function createTxt(line, size, align, color, font, x, y) {
 }
 
 function removeLine(line) {
-    gMeme.txts[line].line='';;
+    gMeme.txts[line].line = '';;
 }
 
 function drawLine(gMeme) {
