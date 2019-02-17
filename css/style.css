@@ -1,6 +1,12 @@
 body {
     margin: 0px;
     padding: 0px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f6e6b4+0,ed9017+100;Yellow+3D+%231 */
+background: #f6e6b4; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #f6e6b4 0%, #ed9017 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #f6e6b4 0%,#ed9017 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #f6e6b4 0%,#ed9017 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6e6b4', endColorstr='#ed9017',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .social-share-btn {
@@ -42,8 +48,75 @@ canvas {
 
  .search {
      margin: 0 auto;
-     width: 10%;
+     size:100;
  }
+
+.searchForm{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+.sInput{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.searchForm:hover{
+    width: 200px;
+    cursor: pointer;
+}
+
+.keywords:hover {
+    display: block;
+    width: 200px;
+    cursor: pointer;
+    background: #07051a;
+    color: white;
+}
+
+.searchForm:hover input{
+    display: block;
+}
+
+.searchForm:hover .fa {
+    background: #07051a;
+    color: white;
+}
 
  /*
   * ==== hexagon
@@ -64,17 +137,9 @@ canvas {
       transition: all ease 500ms;
   }
   
-  h1 {
-      font-family: bebas_neueregular ,sans-serif;
-      font-size: 1.75em;
-      padding: 0.2em 0 0.2em 0.2em;
-      color: white;
-      text-shadow: 0 0.06em 0 #424242;
-      position: relative;
-  }
-  
   #lab h1 {
-      background: #B0DAD4;
+      background: black;
+      color: white;
   }
 
   .sectionheader {

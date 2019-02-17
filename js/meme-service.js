@@ -50,11 +50,10 @@ function getImgsToDisplay(filter = null) {
     if (filter === null || filter == "") {
         return gImgs;
     } else {
-        console.log(str)
         return gImgs.filter(img => {
             var result = false;
             img.keywords.forEach(keyword => {
-                if (keyword.includes(str)) {
+                if (keyword.includes(filter)) {
                     result = true;
                 }
             })

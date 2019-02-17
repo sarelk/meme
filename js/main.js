@@ -7,9 +7,6 @@ function init() {
 
 // loads gallery 
 function renderGallery(filter = null) {
-    if (filter) {
-        filter=filter.toLowerCase();
-    }
     var imgs = getImgsToDisplay(filter);
     var strHtmls = imgs.map(function (img) {
         return `
