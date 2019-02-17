@@ -28,7 +28,7 @@ var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['happy', 'mountain', 'blond']
 { id: 24, url: 'img/24.jpg', keywords: ['politics', 'russia', 'putin'] },
 { id: 25, url: 'img/25.jpg', keywords: ['movies', 'animation', 'toy story'] }
 ];
-var gKeywords = [];
+
 var gMeme = {
     selectedImgId: 5,
     txts: []
@@ -44,13 +44,6 @@ function loadImg(id) {
         gCanvas.height = img.naturalHeight
         gCtx.drawImage(img, 0, 0);
     }
-}
-
-function getKeywords() {
-    gImgs.forEach(img => {
-        var keywords = img.keywords;
-        gKeywords.push(keywords);
-    });
 }
 
 function getImgsToDisplay(filter = null) {
@@ -80,4 +73,8 @@ function createTxt(line, size, align, color, font, x, y) {
         x: x,
         y: y
     }
+}
+
+function removeLine(line) {
+    gMeme.txts[line].line='';;
 }

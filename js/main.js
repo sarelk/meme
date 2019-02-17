@@ -2,7 +2,7 @@
 // When page loads, show only gallery 
 function init() {
     renderGallery();
-    getKeywords();
+
 }
 
 // loads gallery 
@@ -38,7 +38,6 @@ function onChoseImg(id) {
 
 // When user upload a photo - render it to canvas
 function renderCanvas(img) {
-
     gCanvas.width = img.width;
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0);
@@ -167,10 +166,10 @@ function generateLineHtml() {
         </div>
 
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
-            <button type="button" class="btn btn-secondary"><i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-secondary" onclick="onDoFontSize('plus')"><i class="fas fa-plus"></i></button>
+            <button type="button" class="btn btn-secondary" onclick="onDoFontSize('minus')"><i class="fas fa-minus"></i></button>
         </div>
-        <button type="button" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></i></button>
+        <button type="button" class="btn btn-secondary" onclick="onRemove()"><i class="fas fa-trash-alt"></i></i></button>
     </div>
 </div>
     `
@@ -186,4 +185,14 @@ function onDoFontSize(val) {
         wrapper.querySelector('.fontSize').value++;
         onDoMeme()
     }
+}
+
+function onRemove() {
+    var targetElementInput =  event.target;
+    var wrapper = $(targetElementInput).parents('.line-wrapper')[0];
+    var lineInput= wrapper.querySelector('.line-input');
+    var wrapperName = wrapper.dataset.name;
+    removeLine(wrapperName);
+    lineInput.value='';
+    onDoMeme();
 }
